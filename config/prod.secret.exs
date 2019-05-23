@@ -13,5 +13,9 @@ secret_key_base =
     """
 
 config :bare_channel, BareChannelWeb.Endpoint,
-  http: [:inet6, port: String.to_integer(System.get_env("PORT") || "4000")],
+  http: [
+    :inet6,
+    port: String.to_integer(System.get_env("PORT") || "4000"),
+    transport_options: [max_connections: 1_048_576, num_acceptors: 1000]
+  ],
   secret_key_base: secret_key_base

@@ -11,7 +11,6 @@ use Mix.Config
 config :bare_channel, BareChannelWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "TcPi6fnklPZuTqEP8NkNrbSIyzc4YsE6dusHX2v5SHeZIFEGPLuSSGieBd9JtH+z",
-  transport_options: [max_connections: 1_048_576],
   render_errors: [view: BareChannelWeb.ErrorView, accepts: ~w(json)],
   pubsub: [name: BareChannel.PubSub, adapter: Phoenix.PubSub.PG2]
 
