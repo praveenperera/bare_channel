@@ -2,7 +2,7 @@ defmodule BareChannelWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :bare_channel
 
   socket "/socket", BareChannelWeb.UserSocket,
-    websocket: true,
+    websocket: [timeout: :infinity],
     longpoll: false
 
   # Serve at "/" the static files from "priv/static" directory.
