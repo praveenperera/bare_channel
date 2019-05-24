@@ -1,0 +1,24 @@
+#!/bin/bash
+start=`date +%s`
+
+APP_NAME="$(grep 'app:' mix.exs | sed -e 's/\[//g' -e 's/ //g' -e 's/app://' -e 's/[:,]//g')"
+APP_VSN="$(grep 'version:' mix.exs | cut -d '"' -f2)"
+
+BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+
+
+printf "Building dockerfile for app: ${APP_NAME}, vsn: ${APP_VSN}, branch: ${BRANCH} \n\n"
+docker build . --build-arg APP_NAME=$APP_NAME \
+               --build-arg APP_VSN=$APP_VSN  \
+               -t praveenperera/$APP_NAME:$BRANCH 
+
+printf "Docker build complete  \n\n"
+docker push praveenperera/$APP_NAME:$BRANCH
+
+printf "Docker push complete  \n\n"
+
+say done 
+
+end=`date +%s` 
+SECONDS=$((end-start))
+echo "Done in: $(($SECONDS / 3600))hrs $((($SECONDS / 60) % 60))min $(($SECONDS % 60))sec"
