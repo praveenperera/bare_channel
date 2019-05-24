@@ -34,6 +34,7 @@ defmodule BareChannel.MixProject do
     [
       {:phoenix, "~> 1.4.6"},
       {:phoenix_pubsub, "~> 1.1"},
+      {:distillery, "~> 2.0"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"}
