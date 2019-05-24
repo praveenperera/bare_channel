@@ -1,7 +1,7 @@
 defmodule BareChannelWeb.PayloadChannel do
   use BareChannelWeb, :channel
 
-  def join("payload:" <> id, payload, socket) do
+  def join("payload:" <> _id, payload, socket) do
     if authorized?(payload) do
       {:ok, socket}
     else
