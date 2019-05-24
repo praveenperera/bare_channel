@@ -7,6 +7,8 @@ secret_key_base =
     You can generate one by calling: mix phx.gen.secret
     """
 
+config :logger, level: String.to_atom(System.get_env("LOGGER_LEVEL") || "warn")
+
 config :bare_channel, BareChannelWeb.Endpoint,
   http: [:inet6, port: String.to_integer(System.get_env("PORT") || "4000")],
   secret_key_base: secret_key_base
